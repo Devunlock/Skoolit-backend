@@ -5,6 +5,10 @@ import subjectsRouter from './routes/subjects';
 const app = express();
 const port = process.env.PORT || 8001;
 
+if (!process.env.FRONTEND_URL) {
+  throw new Error("FRONTEND_URL is not defined in environment variables");
+}
+
 app.use(cors({
   origin: process.env.FRONTEND_URL,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
